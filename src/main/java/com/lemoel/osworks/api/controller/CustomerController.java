@@ -15,9 +15,9 @@ public class CustomerController {
     public List<Customer> listar() {
         var customer =  Customer.builder()
                 .id(1L)
-                .email("lemoel@gmail.com")
-                .name("Lemoel Marques")
-                .phone("47997286565")
+                .email("teste@gmail.com")
+                .name("Teste Marques")
+                .phone("474747474747")
                 .build();
 
         return Arrays.asList(customer);
