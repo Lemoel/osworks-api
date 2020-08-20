@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lemoel.osworks.domain.model.Customer;
 import com.lemoel.osworks.domain.repository.CustomerRepository;
+import com.lemoel.osworks.domain.service.CrudCustumerService;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -31,6 +32,9 @@ public class CustomerController {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    CrudCustumerService custumerService;
 
     @GetMapping
     public List<Customer> findAll() {
@@ -50,7 +54,7 @@ public class CustomerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Customer add(@Valid @RequestBody Customer customer) {
-        return customerRepository.save(customer);
+        return custumerService.save(customer);
     }
 
     @PutMapping("/{id}")
@@ -62,7 +66,7 @@ public class CustomerController {
         }
 
         customer.setId(id);
-        customer = customerRepository.save(customer);
+        customer = custumerService.save(customer);
 
         return ResponseEntity.ok(customer);
     }
@@ -74,7 +78,7 @@ public class CustomerController {
             return ResponseEntity.notFound().build();
         }
 
-        customerRepository.deleteById(id);
+        custumerService.delete(id);
 
         return ResponseEntity.noContent().build();
     }
