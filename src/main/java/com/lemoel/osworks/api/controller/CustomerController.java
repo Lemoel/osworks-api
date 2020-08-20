@@ -3,8 +3,6 @@ package com.lemoel.osworks.api.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +39,9 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> search(@PathVariable Long id) {
-        Optional<Customer> customer =  customerRepository.findById(id);
+        Optional<Customer> customer = customerRepository.findById(id);
 
-        if(customer.isPresent()) {
+        if (customer.isPresent()) {
             return ResponseEntity.ok(customer.get());
         }
         return ResponseEntity.notFound().build();
@@ -51,15 +49,15 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer add(@Valid @RequestBody Customer customer){
+    public Customer add(@Valid @RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Customer> update(@PathVariable Long id,
-                                           @Valid @RequestBody Customer customer){
-        if(!customerRepository.existsById(id)) {
+                                           @Valid @RequestBody Customer customer) {
+        if (!customerRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
 
@@ -72,7 +70,7 @@ public class CustomerController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        if(!customerRepository.existsById(id)) {
+        if (!customerRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
 

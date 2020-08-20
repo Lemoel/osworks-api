@@ -11,6 +11,7 @@ import com.lemoel.osworks.domain.model.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     List<Customer> findByName(String name);
+
     List<Customer> findByNameContaining(String name);
 
 }
