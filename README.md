@@ -13,5 +13,3 @@
 ex: datahora de finalização da ordem de serviço;
 - ModelMapper - Para fazer a transformação dos objetos de dominio em objetos de representação;
 em `com.lemoel.osworks.api.model` tem os objetos DTO;
-em 
-- 
