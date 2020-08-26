@@ -1,6 +1,7 @@
 package com.lemoel.osworks.api.exceptionhandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         var problem = new Problem();
         problem.setStatus(status.value());
         problem.setTitle(ex.getMessage());
-        problem.setDateTime(LocalDateTime.now());
+        problem.setDateTime(OffsetDateTime.now());
         return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
     }
 
@@ -54,7 +55,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         var problem = new Problem();
         problem.setStatus(status.value());
         problem.setTitle("Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente");
-        problem.setDateTime(LocalDateTime.now());
+        problem.setDateTime(OffsetDateTime.now());
         problem.setFields(fields);
 
         return super.handleExceptionInternal(ex, problem, headers, status, request);

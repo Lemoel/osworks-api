@@ -1,6 +1,7 @@
 package com.lemoel.osworks.api.exceptionhandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,7 +17,7 @@ import lombok.experimental.FieldDefaults;
 public class Problem {
 
     Integer status;
-    LocalDateTime dateTime;
+    OffsetDateTime dateTime;
     String title;
     List<Field> fields;
 
